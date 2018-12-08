@@ -18,9 +18,11 @@ Can run `make` and will use docker to build.
 
 ## Usage
 
+### CLI
+
 Three basic commands:
 
-### Get posts
+#### Get posts
 
 `hacker-news-cli` Gets the latest 30 posts from hacker news, can add `--posts <int>` 
 to determine how many posts are returned (max of 100), can also add `--indent` to pretty
@@ -47,7 +49,7 @@ Returns (truncated)
 ]
 ```
 
-### Save post
+#### Save post
 
 To save a post the command is just `save <id>` (this uses a sqlite db). Example:
 
@@ -55,7 +57,7 @@ To save a post the command is just `save <id>` (this uses a sqlite db). Example:
 $ hacker-news-cli save 18636113
 ```
 
-### View saved posts
+#### View saved posts
 
 To view the saved posts, use the `saved` command. As with getting the posts, you can 
 also use the `--indent` flag here. Example:
@@ -76,6 +78,33 @@ Returns
     "uri": "https://rocket.rs/v0.4/news/2018-12-08-version-0.4/"
   }
 ]
+```
+
+### Package
+
+Can also use this as a package, example usage:
+
+```go
+package main
+
+import (
+	"github.com/m1/hacker-news-cli/pkg/hn"
+	"github.com/m1/hacker-news-cli/pkg/hn/config"
+)
+
+func main() {
+	client := hn.NewClient(&config.Config{
+		MaxPosts: 100,
+	})
+
+	posts := client.GetPosts(10)
+	for _, p := range posts {
+		println(p.Id)
+	}
+
+	post, _ := client.GetPost(18636113)
+	println(post.Id)
+}
 ```
 
 ## Notes
