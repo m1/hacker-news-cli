@@ -81,7 +81,7 @@ Returns
 ## Notes
 
 - Unit tested with ~70% coverage
-- Used sqlite due to portable sql.123
+- Used sqlite due to portable sql
 - Uses [colly](https://github.com/gocolly/colly) for scraping, due to 
 being nice and simple to use
 - Uses [gorm](http://gorm.io/) for db access
