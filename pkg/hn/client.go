@@ -45,9 +45,7 @@ func (c Client) GetPosts(num int) posts.Posts {
 	// sort posts into numeric order dependent on rank
 	var ps posts.Posts
 	for pagePost := range pagePosts {
-		for _, p := range pagePost {
-			ps = append(ps, p)
-		}
+		ps = append(ps, pagePost...)
 	}
 	sort.Slice(ps, func(i, j int) bool {
 		return *ps[i].Rank < *ps[j].Rank

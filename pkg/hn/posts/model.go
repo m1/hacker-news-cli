@@ -32,8 +32,7 @@ func NewPost() *Post {
 func (p *Post) MarshalJSON() ([]byte, error) {
 	type Alias Post
 
-	var savedUnix *int64
-	savedUnix = nil
+	var savedUnix *int64 = nil
 	if p.Saved != nil {
 		unix := p.Saved.Unix()
 		savedUnix = &unix
@@ -80,8 +79,8 @@ func (p *Post) UnmarshallJSON(data []byte) error {
 }
 
 func (p *Post) BeforeSave(scope *gorm.Scope) error {
-	scope.SetColumn("saved", time.Now())
-	scope.SetColumn("uri", p.Uri.String())
+	_ = scope.SetColumn("saved", time.Now())
+	_ = scope.SetColumn("uri", p.Uri.String())
 	return nil
 }
 

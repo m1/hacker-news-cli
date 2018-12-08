@@ -21,7 +21,6 @@ func NewTestServer() *httptest.Server {
 		}
 
 		fmt.Fprint(w, string(HtmlPage1))
-		return
 	})
 
 	testServer.HandleFunc("/news?p=2", func(w http.ResponseWriter, r *http.Request) {
