@@ -80,9 +80,9 @@ Returns
 ]
 ```
 
-### Package
+### Library
 
-Can also use this as a package, example usage:
+Can also use this as a library, example usage:
 
 ```go
 package main
