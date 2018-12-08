@@ -1,5 +1,7 @@
 # Hacker News CLI
 
+[![Build Status](https://travis-ci.com/m1/hacker-news-cli.svg?branch=master)](https://travis-ci.com/m1/hacker-news-cli)
+
 ## Install
 
 ### Go
